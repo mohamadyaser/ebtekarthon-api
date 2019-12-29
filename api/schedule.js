@@ -12,6 +12,4 @@ router.post(routeBase + '/day', (req, res) => {
     res.send('success');
 });
 
-
-
 module.exports = router;
