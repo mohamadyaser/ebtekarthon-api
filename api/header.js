@@ -4,12 +4,7 @@ const
     routeBase = '/header'
 ;
 
-router.post(routeBase + '/logo', (req, res) => {
-    saveImageToDisk(req.image, folder, (error, relativePath) => {
 
-    })
-    res.send('success');
-});
 
 router.get(routeBase + '/logo', (req, res) => {
     res.send('success get');
