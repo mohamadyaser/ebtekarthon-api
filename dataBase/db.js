@@ -5,7 +5,7 @@ const mySql = require('mySql'),
  const db = mySql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: '12345',
+//    password: 'adminuser',
     database: 'ebtekarthon'
 });
 // connect
@@ -16,5 +16,3 @@ db.connect((err) => {
 });
 
 module.exports = router;
-
-// it's not complated, work on single page database, I'm work on it.
