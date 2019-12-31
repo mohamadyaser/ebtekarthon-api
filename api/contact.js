@@ -6,14 +6,16 @@ const
 
 
 
-router.get(routeBase + '/contact', (req, res) => {
+router.get(routeBase + '/get', (req, res) => {
+      console.log(req.body);
     res.send('success get');
 });
 
-router.get(routeBase + '/contactp', (req, res) => {
-    res.send('success get');
-});
-router.post(routeBase + '/contact', (req, res) => {
+// router.get(routeBase + '/contactp', (req, res) => {
+//     res.send('success get');
+// });
+router.post(routeBase + '/post', (req, res) => {
+   console.log(req.body);
     res.send('success get');
 });
 
