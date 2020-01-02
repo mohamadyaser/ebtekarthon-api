@@ -2,7 +2,9 @@ const express = require('express');
 router = express.Router(),
     routeBase = '/speaker',
     {createDatabaseConnection, DB_NAME} = require('../database/db.js');
+
 router.post(routeBase, (req, res) => {
+    
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "*");
     console.log(req.body);
