@@ -16,7 +16,6 @@ app.use(schedule);
 app.use(contact);
 app.use(speaker);
 app.use(partners);
-app.use(db);
 
 app.listen(port, () => {
     console.log(`server is listening on port ${port}`);

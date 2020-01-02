@@ -3,6 +3,7 @@ const
     router = express.Router(),
     routeBase = '/partners'
 ;
+
 router.get(routeBase + '/partners', (req, res) => {
     res.send('success get');
 });

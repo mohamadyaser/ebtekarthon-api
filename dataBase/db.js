@@ -1,17 +1,24 @@
 const mySql = require('mySql'),
-       express = require("express"),    
-       router = express.Router();
+        express = require("express"),
+      DB_NAME = 'ebtekarthon';
 
- const db = mySql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '12345',
-    database: 'ebtekarthon'
-});
-// connect
-db.connect((err) => {
-    if (err) throw err
-    console.log('Mysql Connected....')
-});
+function createDatabaseConnection(callback) {
+    const connection = mySql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: '12345',
+        database: DB_NAME
+    });
+    // connect
+    connection.connect((err) => {
+        if (callback) {
+            callback(err, connection);
+        }
+    });
+}
 
-module.exports = router;
+module.exports = {
+    createDatabaseConnection,
+    DB_NAME
+};
+
