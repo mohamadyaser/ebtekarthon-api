@@ -1,9 +1,9 @@
 const
     express = require("express"),
     router = express.Router(),
-    routeBase = '/partners'
+    routeBase = '/speaker'
 ;
-router.get(routeBase + '/partners', (req, res) => {
+router.get(routeBase + '/speaker', (req, res) => {
     res.send('success get');
 });
 
