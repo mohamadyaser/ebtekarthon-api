@@ -35,7 +35,7 @@ createDatabaseConnection((error, connection) => {
                 req.status(500);
                 return;
             }
-                connection.query(`DELETE * FROM ${DB_NAME}.'partner_inf' WHERE id IN (` + id +`)` , function (err, result) {
+                connection.query(`DELETE * FROM ${DB_NAME}.'partner_inf' WHERE id IN (${id})` , function (err, result) {
                 if (err) throw err ; 
                 return res.status(201).send(result);
                 }); 
@@ -53,8 +53,7 @@ router.post(routeBase + '/partners', (req, res) => {
           return;
       }
       
-   s =`INSERT INTO ${DB_NAME}.'partner_inf' ('img', 'wsite') VALUES ( '"
-    + req.body.img +" ', '" + req.body.wsite +  " ' ) ;` ;
+   s =`INSERT INTO ${DB_NAME}.'partner_inf' ('img', 'wsite') VALUES (${req.body.img},${req.body.wsite});` ;
                    
      connection.query(s, function (err, result) {
       if (err) throw err;

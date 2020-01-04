@@ -8,7 +8,7 @@ router.post(routeBase, (req, res) => {
             req.status(500);
             return;
         }
-        connection.query(`INSERT INTO ${DB_NAME} (name,position,email,bio)
+        connection.query(`INSERT INTO ${DB_NAME}.speaker_inf (name,position,email,bio)
          VALUES (${req.body.SpeakerName},${req.body.SpeakerPosition},
               ${req.body.SpeakerEmail},${req.body.SpeakerBIO});`, function (err, result) {
             if (err) throw err;
@@ -26,7 +26,7 @@ router.get(routeBase, (req, res) => {
             req.status(500)
             return;
         }
-        connection.query("SELECT * FROM  ${DB_NAME}.partner_inf ", function (err, result) {
+        connection.query("SELECT * FROM  ${DB_NAME}.speaker_inf ", function (err, result) {
         if (err) throw err;
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "*");
