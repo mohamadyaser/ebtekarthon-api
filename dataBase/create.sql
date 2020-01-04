@@ -90,12 +90,20 @@ CREATE TABLE social_media (
     PRIMARY KEY (id),
     FOREIGN KEY (ebt_id) REFERENCES ebtekarthon_event(id)
 );
+<<<<<<< HEAD
 
 CREATE TABLE venue (
     id int NOT NULL AUTO_INCREMENT ,
     namevenue  varchar(255),
     phone  varchar(255),
     email  varchar(255),
+=======
+CREATE TABLE venue (
+    id int NOT NULL AUTO_INCREMENT ,
+    namevenue varchar(255),
+    phone varchar(255),
+    email varchar(255),
+>>>>>>> 2b3f7d3416022c576d884a0b2317a2f654f7d66d
     ebt_id int ,
     PRIMARY KEY (id),
     FOREIGN KEY (ebt_id) REFERENCES ebtekarthon_event(id)
