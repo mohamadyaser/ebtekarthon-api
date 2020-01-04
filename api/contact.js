@@ -16,6 +16,7 @@ createDatabaseConnection((error, connection) => {
        }
        connection.query(`SELECT * FROM ${DB_NAME}.'contact_inf' `, function (err, result) {
         if (err) throw err ; 
+        connection.end();
           res.send(result);
  }); 
 });
@@ -32,8 +33,9 @@ createDatabaseConnection((error, connection) => {
       req.status(500);
       return;
   }
-  connection.query(`DELETE * FROM ${DB_NAME}.'contact_inf' WHERE id IN (` + id +`)` , function (err, result) {
+  connection.query(`DELETE * FROM ${DB_NAME}.'contact_inf' WHERE id IN (${id})` , function (err, result) {
    if (err) throw err ; 
+   connection.end();
    return res.status(201).send(result);
 }); 
 });
@@ -50,9 +52,8 @@ router.post(routeBase + '/contact', (req, res) => {
           return;
       }
       
-   s =`INSERT INTO ${DB_NAME}.'contact_inf' ('name', 'position', 'email', 'bio') VALUES ( '"
-    + req.body.name +" ', '" + req.body.position +  "', '"
-     + req.body.mobile  +"' , '" + req.body.email + " ' ) ;` ;
+   s =`INSERT INTO ${DB_NAME}.contact_inf ('name', 'position', 'email', 'bio') VALUES ( 
+    ${req.body.name},${req.body.position},${req.body.mobile},${req.body.email}) ;` ;
                    
      connection.query(s, function (err, result) {
       if (err) throw err;
@@ -63,6 +64,7 @@ router.post(routeBase + '/contact', (req, res) => {
            email : req.body.email  };
 
       console.log(result);
+      connection.end();
  res.send(n);
  });
 });
