@@ -6,7 +6,7 @@ const
 
 ;
 
-router.get(routeBase + '/partners', (req, res) => {
+router.get(routeBase , (req, res) => {
            res.header("Access-Control-Allow-Origin", "*");
            res.header("Access-Control-Allow-Headers", "*");
    
@@ -24,7 +24,7 @@ createDatabaseConnection((error, connection) => {
  });
 
 
-            router.delete(routeBase + '/partners/', (req, res) => {
+            router.delete(routeBase +"/" , (req, res) => {
             res.header("Access-Control-Allow-Origin", "*");
             res.header("Access-Control-Allow-Headers", "*");
             console.log(req.body);
@@ -42,7 +42,7 @@ createDatabaseConnection((error, connection) => {
                 });
                 });
     
-router.post(routeBase + '/partners', (req, res) => { 
+router.post(routeBase , (req, res) => { 
 
    res.header("Access-Control-Allow-Origin", "*");
    res.header("Access-Control-Allow-Headers", "*");
