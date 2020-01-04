@@ -2,7 +2,7 @@ const
     express = require("express"),
     router = express.Router(),
     routeBase = '/partners'  , 
-     {createDatabaseConnection, DB_NAME} = require('../database/db.js');
+     {createDatabaseConnection, DB_NAME} = require('../dataBase/config.js');
 
 ;
 

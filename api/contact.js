@@ -2,9 +2,9 @@ const
     express = require("express"),
     router = express.Router(),
     routeBase = '/contact',
-    {createDatabaseConnection, DB_NAME} = require('../database/db.js');
+    {createDatabaseConnection, DB_NAME} = require('../dataBase/config.js');
 
- router.get(routeBase + '/contact', (req, res) => {
+ router.get(routeBase , (req, res) => {
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "*");
 console.log(req.body);
@@ -22,7 +22,7 @@ createDatabaseConnection((error, connection) => {
 });
  });
 
- router.delete(routeBase + '/contact/', (req, res) => {
+ router.delete(routeBase + '/', (req, res) => {
    res.header("Access-Control-Allow-Origin", "*");
    res.header("Access-Control-Allow-Headers", "*");
 console.log(req.body);
@@ -41,7 +41,7 @@ createDatabaseConnection((error, connection) => {
 });
 });
     
-router.post(routeBase + '/contact', (req, res) => { 
+router.post(routeBase , (req, res) => { 
 
    res.header("Access-Control-Allow-Origin", "*");
    res.header("Access-Control-Allow-Headers", "*");
@@ -52,20 +52,20 @@ router.post(routeBase + '/contact', (req, res) => {
           return;
       }
       
-   s =`INSERT INTO ${DB_NAME}.contact_inf ('name', 'position', 'email', 'bio') VALUES ( 
-    ${req.body.name},${req.body.position},${req.body.mobile},${req.body.email}) ;` ;
+   s =`INSERT INTO ${DB_NAME}.contact_inf (name,position,email,bio) VALUES ( 
+    ${req.body.name},${req.body.position},${req.body.mobile},${req.body.email});`
                    
      connection.query(s, function (err, result) {
       if (err) throw err;
-      let n = { id :result.insertId ,
-         name : req.body.name ,
-          position : req.body.position 
-          , mobile : req.body.mobile ,
-           email : req.body.email  };
+    //   let n = { id :result.insertId ,
+    //      name : req.body.name ,
+    //       position : req.body.position 
+    //       , mobile : req.body.mobile ,
+    //        email : req.body.email  };
 
       console.log(result);
       connection.end();
- res.send(n);
+ res.send(result);
  });
 });
 });

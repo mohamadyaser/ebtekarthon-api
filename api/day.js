@@ -1,7 +1,7 @@
 const express = require('express');
 router = express.Router(),
     routeBase = '/day',
-    {createDatabaseConnection, DB_NAME} = require('../database/db.js');
+    {createDatabaseConnection, DB_NAME} = require('../dataBase/config.js');
 router.post(routeBase, (req, res) => {
     createDatabaseConnection((error, connection) => {
         if (error) {
