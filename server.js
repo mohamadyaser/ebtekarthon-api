@@ -9,6 +9,7 @@ const
     about = require('./api/about'),
     headerLogo = require('./api/headerLogo'),
     home = require('./api/home'),
+    socialMedia = require('./api/socialMedia'),
     juries = require('./api/juries'),
     partners = require('./api/partners'),
     db = require('./dataBase/config'),
@@ -23,6 +24,7 @@ app.use(speaker);
 app.use(about);
 app.use(headerLogo);
 app.use(home);
+app.use(socialMedia);
 app.use(juries);
 app.use(partners);
 app.use(cors()); 
