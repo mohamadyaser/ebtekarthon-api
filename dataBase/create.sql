@@ -61,8 +61,8 @@ CREATE TABLE contact_inf (
     id int UNSIGNED NOT NULL AUTO_INCREMENT,
     name varchar(255),
     position varchar(255),
+    mobile int ,
     email varchar(255),
-    mobile int , 
     bio varchar(255),
     PRIMARY KEY (id)
 );

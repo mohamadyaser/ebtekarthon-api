@@ -7,16 +7,16 @@ const
  router.get(routeBase , (req, res) => {
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "*");
-console.log(req.body);
 
 createDatabaseConnection((error, connection) => {
        if (error) {
            req.status(500);
            return;
        }
-       connection.query(`SELECT * FROM ${DB_NAME}.'contact_inf' `, function (err, result) {
+       connection.query(`SELECT * FROM ${DB_NAME}.contact_inf`, function (err, result) {
         if (err) throw err ; 
         connection.end();
+        console.log(result);
           res.send(result);
  }); 
 });
@@ -52,20 +52,20 @@ router.post(routeBase , (req, res) => {
           return;
       }
       
-   s =`INSERT INTO ${DB_NAME}.contact_inf (name,position,email,bio) VALUES ( 
-    ${req.body.name},${req.body.position},${req.body.mobile},${req.body.email});`
+   s =`INSERT INTO ${DB_NAME}.contact_inf (name,position,mobile,email) VALUES ( '`+req.body.name +"' ,'" + req.body.position +"' ,'" +req.body.mobile +"' ,'" + req.body.email + " ');"
                    
      connection.query(s, function (err, result) {
       if (err) throw err;
-    //   let n = { id :result.insertId ,
-    //      name : req.body.name ,
-    //       position : req.body.position 
-    //       , mobile : req.body.mobile ,
-    //        email : req.body.email  };
+      let n = { id :result.insertId ,
+         name : req.body.name ,
+          position : req.body.position 
+          , mobile : req.body.mobile ,
+           email : req.body.email  };
 
       console.log(result);
+      console.log(n);
       connection.end();
- res.send(result);
+ res.send(n);
  });
 });
 });

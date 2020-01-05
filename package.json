@@ -1,17 +1,14 @@
 {
   "name": "ebtekarthon-api",
-  "version": "12.0.0.",
-  "main": "server.js",
-  "repository": "https://github.com/mohamadyaser/ebtekarthon-api.git",
-  "author": "HamzaOly",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/mohamadyaser/ebtekarthon-api",
+  "author": "eman-el-zetawy <eman.el.zetawy12@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mysql": "^2.17.1",
-    "nodemon": "^2.0.2",
-    "npx": "^10.2.0"
-  },
-  "private": null
+    "mysql": "^2.17.1"
+  }
 }
