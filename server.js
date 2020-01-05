@@ -8,6 +8,7 @@ const
     speaker = require('./api/speaker'),
     about = require('./api/about'),
     headerLogo = require('./api/headerLogo'),
+    home = require('./api/home'),
     partners = require('./api/partners'),
     db = require('./dataBase/config'),
     cors = require('cors'),
@@ -20,6 +21,7 @@ app.use(contact);
 app.use(speaker);
 app.use(about);
 app.use(headerLogo);
+app.use(home);
 app.use(partners);
 app.use(cors()); 
 // app.use(db);
