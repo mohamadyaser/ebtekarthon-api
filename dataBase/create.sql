@@ -101,3 +101,4 @@ CREATE TABLE venue (
     PRIMARY KEY (id),
     FOREIGN KEY (ebt_id) REFERENCES ebtekarthon_event(id)
 );
+ALTER TABLE speaker_inf add img varchar(255);
