@@ -1,7 +1,7 @@
 {
   "name": "ebtekarthon-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "repository": "https://github.com/mohamadyaser/ebtekarthon-api",
   "author": "eman-el-zetawy <eman.el.zetawy12@gmail.com>",
   "license": "MIT",

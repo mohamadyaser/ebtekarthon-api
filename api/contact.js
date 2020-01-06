@@ -10,7 +10,8 @@ const
 
 createDatabaseConnection((error, connection) => {
        if (error) {
-           req.status(500);
+          //  req.status(500);
+          console.log(error);
            return;
        }
        connection.query(`SELECT * FROM ${DB_NAME}.contact_inf`, function (err, result) {
@@ -48,7 +49,8 @@ router.post(routeBase , (req, res) => {
    console.log(req.body);
    createDatabaseConnection((error, connection) => {
       if (error) {
-          req.status(500);
+          // req.status(500);
+          console.log(error);
           return;
       }
       
