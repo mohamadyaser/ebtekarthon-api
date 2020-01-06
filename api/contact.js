@@ -23,7 +23,7 @@ createDatabaseConnection((error, connection) => {
 });
  });
 
- router.delete(routeBase + '/', (req, res) => {
+ router.delete(routeBase +'/', (req, res) => {
    res.header("Access-Control-Allow-Origin", "*");
    res.header("Access-Control-Allow-Headers", "*");
 console.log(req.body);
@@ -34,9 +34,10 @@ createDatabaseConnection((error, connection) => {
       req.status(500);
       return;
   }
-  connection.query(`DELETE * FROM ${DB_NAME}.'contact_inf' WHERE id IN (${id})` , function (err, result) {
+  connection.query(`DELETE FROM ${DB_NAME}.'contact_inf WHERE id  IN (`+ id +`)`, function (err, result) {
    if (err) throw err ; 
    connection.end();
+   console.log(id);
    return res.status(201).send(result);
 }); 
 });
