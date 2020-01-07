@@ -4,6 +4,7 @@ const
     routeBase = '/contact',
     {createDatabaseConnection, DB_NAME} = require('../dataBase/config.js');
 
+    
  router.get(routeBase , (req, res) => {
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "*");
