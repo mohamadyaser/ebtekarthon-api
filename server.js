@@ -9,6 +9,7 @@ const
     about = require('./api/about'),
     headerLogo = require('./api/headerLogo'),
     home = require('./api/home'),
+    event = require('./api/event'),
     socialMedia = require('./api/socialMedia'),
     juries = require('./api/juries'),
     partners = require('./api/partners'),
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 
 app.use(header);
 app.use(day);
+app.use(event);
 app.use(contact);
 app.use(speaker);
 app.use(about);
