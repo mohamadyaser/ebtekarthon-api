@@ -1,6 +1,6 @@
 const express = require('express');
 event = express.Router(),
-	routeBase = '/event', {
+	routeBase = '/eventInf', {
 		createDatabaseConnection,
 		DB_NAME
 	} = require('../dataBase/config.js');
