@@ -13,15 +13,13 @@ event.post(routeBase, (req, res) => {
 			console.log(error);
 			return;
 		}
-		let qu = `INSERT INTO ${DB_NAME}.'day_inf' (day_date, ebt_inf) VALUES ( '+req.body.day_date +"','" + req.body.ebt_id + " ')"`
+		let qu=`INSERT INTO ${DB_NAME}.'day_inf' (title, time, day_id) VALUES ( '`+req.body.title +"','" + req.body.time +"','" + req.body.day_id + " ');"
 		connection.query(qu, function (err, result) {
 			let data = {
-				day_date: req.body.day_date,
-				ebt_id: req.body.ebt_id
+				title: req.body.title,
+				time: req.body.time,
+				day_id: req.body.day_id
 			};
-
-			console.log(result);
-			console.log(data);
 			connection.end();
 			res.send(result);
 		});
@@ -59,7 +57,7 @@ event.get(routeBase, (req, res) => {
 			console.log(error);
 			return;
 		}
-		connection.query(`SELECT * FROM ${DB_NAME}.day_inf`, function (err, result) {
+		connection.query(`SELECT * FROM ${DB_NAME}.event_inf`, function (err, result) {
 			connection.end();
 			console.log(result);
 			res.send(result);
