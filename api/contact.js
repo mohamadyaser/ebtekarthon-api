@@ -35,7 +35,7 @@ createDatabaseConnection((error, connection) => {
       req.status(500);
       return;
   }
-  connection.query(`DELETE FROM ${DB_NAME}.'contact_inf WHERE id  IN (`+ id +`)`, function (err, result) {
+  connection.query(`DELETE FROM ${DB_NAME}.contact_inf WHERE id  IN (`+ id +`)`, function (err, result) {
    if (err) throw err ; 
    connection.end();
    console.log(id);

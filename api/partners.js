@@ -4,7 +4,6 @@ const
     routeBase = '/partners'  , 
      {createDatabaseConnection, DB_NAME} = require('../dataBase/config.js');
 
-;
 
 router.get(routeBase , (req, res) => {
            res.header("Access-Control-Allow-Origin", "*");
@@ -16,7 +15,7 @@ createDatabaseConnection((error, connection) => {
            return;
        }
 
-       connection.query(`SELECT * FROM ${DB_NAME}.'partner_inf' `, function (err, result) {
+       connection.query(`SELECT * FROM ${DB_NAME}.partner_inf `, function (err, result) {
         if (err) throw err ; 
           res.send(result);
  }); 
@@ -35,7 +34,7 @@ createDatabaseConnection((error, connection) => {
                 req.status(500);
                 return;
             }
-                connection.query(`DELETE * FROM ${DB_NAME}.'partner_inf' WHERE id IN (${id})` , function (err, result) {
+                connection.query(`DELETE FROM ${DB_NAME}.partner_inf WHERE id IN (`+id+`)` , function (err, result) {
                 if (err) throw err ; 
                 return res.status(201).send(result);
                 }); 
@@ -53,7 +52,7 @@ router.post(routeBase , (req, res) => {
           return;
       }
       
-   s =`INSERT INTO ${DB_NAME}.'partner_inf' ('img', 'wsite') VALUES (${req.body.img},${req.body.wsite});` ;
+   s =`INSERT INTO ${DB_NAME}.partner_inf (img,wsite) VALUES ('`+req.body.img + `' , '` +req.body.wsite + `');` ;
                    
      connection.query(s, function (err, result) {
       if (err) throw err;
