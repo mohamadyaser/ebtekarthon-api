@@ -18,6 +18,7 @@ const
     port = 3000 ;
 
 app.use(bodyParser.json());
+app.use(cors()); 
 
 //app.use(header);
 app.use(day);
@@ -30,7 +31,6 @@ app.use(speaker);
 app.use(socialMedia);
 app.use(juries);
 app.use(partners);
-app.use(cors()); 
 // app.use(db);
 app.listen(port, () => {
     console.log(`server is listening on port ${port}`);

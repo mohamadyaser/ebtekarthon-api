@@ -319,6 +319,11 @@ execa@^0.7.0:
     signal-exit "^3.0.0"
     strip-eof "^1.0.0"
 
+experss@^0.0.1-security:
+  version "0.0.1-security"
+  resolved "https://registry.yarnpkg.com/experss/-/experss-0.0.1-security.tgz#d949d352ad77ef97856032d454e728b35b89b7ed"
+  integrity sha512-L2HxG73D04Y/U/YOryT50t8SlN+ZAX0MPTX6QyduHSBnGDXTAxRb+6z7buDjAmV/zPPnCan62k5vL0dsGmhBLg==
+
 express@^4.17.1:
   version "4.17.1"
   resolved "https://registry.yarnpkg.com/express/-/express-4.17.1.tgz#4491fc38605cf51f8629d39c2b5d026f98a4c134"
