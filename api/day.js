@@ -1,9 +1,8 @@
 const express = require('express');
 day = express.Router(),
-	routeBase = '/day', {
-		createDatabaseConnection,
-		DB_NAME
-	} = require('../dataBase/config.js');
+	routeBase = '/day', {createDatabaseConnection,DB_NAME} = require('../dataBase/config.js');
+
+                                                             // >>>>  POST <<<< //
 day.post(routeBase, (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "*");
@@ -28,7 +27,7 @@ day.post(routeBase, (req, res) => {
 	});
 })
 
-
+                                                              // >>>> DELETE <<<< //
 day.delete(routeBase + '/:id', (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "*");
@@ -36,8 +35,7 @@ day.delete(routeBase + '/:id', (req, res) => {
 	createDatabaseConnection((error, connection) => {
 		if (error) {
 			req.status(500);
-			return;
-		}
+			return;}
 		connection.query(`DELETE FROM ${DB_NAME}.day_inf WHERE id='` + req.params.id + "';", function (err, result) {
 			if (!err)
 				res.send('Deleted..');
@@ -50,15 +48,14 @@ day.delete(routeBase + '/:id', (req, res) => {
 	});
 });
 
-
+                                                              // >>>> GET <<<< //
 day.get(routeBase, (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "*");
 	createDatabaseConnection((error, connection) => {
 		if (error) {
 			console.log(error);
-			return;
-		}
+			return;}
 		connection.query(`SELECT * FROM ${DB_NAME}.day_inf`, function (err, result) {
 			connection.end();
 			console.log(result);
