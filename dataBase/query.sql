@@ -4,7 +4,7 @@
 ------- >>>> get 
 SELECT * FROM `ebtekarthon`.`contact_inf`;
 ------- >>>>  post 
-INSERT INTO `ebtekarthon`.`contact_inf` (`name`, `position`, `email`, `mobile`, `bio`) VALUES ('eman', 'jordan', 'emanzetawy', '0776655', 'ss/pgj');
+INSERT INTO `ebtekarthon`.`contact_inf` (`name`, `position`,  `mobile`,`email`, `img`) VALUES ('eman', 'jordan', '0776655',  'emanzetawy','ss/pgj');
 ------- >>>>  delete 
 DELETE FROM `ebtekarthon`.`contact_inf` WHERE `id`='1';
 

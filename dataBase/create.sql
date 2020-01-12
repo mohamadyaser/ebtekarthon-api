@@ -63,7 +63,7 @@ CREATE TABLE contact_inf (
     position varchar(255),
     mobile int ,
     email varchar(255),
-    bio varchar(255),
+    img varchar(255),
     PRIMARY KEY (id)
 );
 CREATE TABLE contact_event(
