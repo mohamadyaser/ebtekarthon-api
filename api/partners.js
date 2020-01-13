@@ -34,7 +34,7 @@ createDatabaseConnection((error, connection) => {
                 req.status(500);
                 return;
             }
-                connection.query(`DELETE FROM ${DB_NAME}.partner_inf WHERE id IN (`+id+`)` , function (err, result) {
+                connection.query(`DELETE FROM ${DB_NAME}.partner_inf WHERE id = `+ id , function (err, result) {
                 if (err) throw err ; 
                 return res.status(201).send(result);
                 }); 
@@ -45,7 +45,6 @@ router.post(routeBase , (req, res) => {
 
    res.header("Access-Control-Allow-Origin", "*");
    res.header("Access-Control-Allow-Headers", "*");
-   console.log(req.body);
    createDatabaseConnection((error, connection) => {
       if (error) {
           req.status(500);
@@ -61,7 +60,7 @@ router.post(routeBase , (req, res) => {
           wsite : req.body.wsite
            };
 
-      console.log(result);
+       console.log(n);
  res.send(n);
  });
 });

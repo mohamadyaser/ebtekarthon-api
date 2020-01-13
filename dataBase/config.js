@@ -7,8 +7,7 @@ function createDatabaseConnection(callback) {
         host: 'localhost',
         user: 'root',
      // password : "adminuser"
-     password :"root"
-     ,
+     password :"1234" ,
        database: DB_NAME
     });
     // connect
