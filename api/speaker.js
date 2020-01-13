@@ -27,6 +27,7 @@ router = express.Router(),
             console.log(data);
             connection.end();
             res.send(data);
+            
         });
     });
     });

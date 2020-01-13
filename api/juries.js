@@ -39,10 +39,14 @@ router = express.Router(),
            req.status(500);
            return;
        }
-       connection.query(`DELETE FROM ${DB_NAME}.jurie_inf WHERE id IN (`+id  +`)`, function (err, result) {
-        if (err) throw err ; 
+       connection.query(`DELETE FROM ${DB_NAME}.jurie_inf WHERE id IN (`+id+`)`, function (err, result) {
+        if (error) {
+            req.status(500);
+            return;
+        }
+
         connection.end();
-        return res.status(201).send(result);
+        return res.status(200);
      }); 
      });
      });
