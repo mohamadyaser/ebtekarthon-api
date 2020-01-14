@@ -56,7 +56,7 @@ day.get(routeBase, (req, res) => {
 		if (error) {
 			console.log(error);
 			return;}
-		connection.query(`SELECT * FROM ${DB_NAME}.day_inf`, function (err, result) {
+		connection.query(`select * from event_inf join day_inf on event_id`, function (err, result) {
 			connection.end();
 			console.log(result);
 			res.send(result);
