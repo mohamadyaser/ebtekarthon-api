@@ -1,17 +1,14 @@
 const express = require('express');
 router = express.Router(),
-    routeBase = '/speaker',
+    routeBase = '/juries',
     {createDatabaseConnection, DB_NAME} = require('../dataBase/config.js');
-
-   
-
     router.post(routeBase, (req, res) => {
         createDatabaseConnection((error, connection) => {
             if (error) {
                 req.status(500);
                 return;
             }
-            let sql=`INSERT INTO ${DB_NAME}.speaker_inf (name,position,email,bio,img) VALUES ('`+ req.body.name +`' , '`+req.body.position +`' , '`+req.body.email +`' , '`+req.body.BIO +`' , '`+req.body.img + `');`;
+            let sql=`INSERT INTO ${DB_NAME}.jurie_inf (name,position,email,bio,img) VALUES ('`+ req.body.name +`' , '`+req.body.position +`' , '`+req.body.email +`' , '`+req.body.BIO +`' , '`+req.body.img + `');`;
             connection.query(sql, function (err, result) {
             if (err) throw err;
             let data = { id :result.insertId ,
@@ -27,7 +24,6 @@ router = express.Router(),
             console.log(data);
             connection.end();
             res.send(data);
-            
         });
     });
     });
@@ -38,15 +34,21 @@ router = express.Router(),
      console.log(req.body);
      let id=req.body.id;
      
-     createDatabaseConnection((error, connection) => {
+     createDatabaseConnection((error, connection) => { 
+        console.log("hi1");
        if (error) {
            req.status(500);
            return;
        }
-       connection.query(`DELETE FROM ${DB_NAME}.speaker_inf WHERE id IN (`+id  +`)`, function (err, result) {
-        if (err) throw err ; 
+       connection.query(`DELETE FROM ${DB_NAME}.jurie_inf WHERE id IN (`+id+`)`, function (err, result) {
+        console.log("hi2");
+        if (err) {
+            req.status(500);
+            return;
+        }
+
         connection.end();
-        return res.status(201).send(result);
+        res.status(200).send("hi");
      }); 
      });
      });
@@ -58,7 +60,7 @@ router.get(routeBase, (req, res) => {
             req.status(500)
             return;
         }
-        connection.query(`SELECT * FROM  ${DB_NAME}.speaker_inf `, function (err, result) {
+        connection.query(`SELECT * FROM  ${DB_NAME}.jurie_inf `, function (err, result) {
         if (err) throw err;
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "*");
