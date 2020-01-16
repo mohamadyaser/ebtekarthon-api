@@ -4,11 +4,7 @@ const
     routeBase = '/contact', 
     {createDatabaseConnection, DB_NAME} = require('../dataBase/config.js');
 
-   //   const bodyParser = require('body-parser');
-
-   //  router.use(bodyParser.json());
-   //  router.use(express.json());
-   //  const fs = require('fs');
+     const fs = require('fs');
     
  router.get(routeBase , (req, res) => {
         res.header("Access-Control-Allow-Origin", "*");
@@ -45,8 +41,7 @@ createDatabaseConnection((error, connection) => {
   connection.query(`DELETE FROM ${DB_NAME}.contact_inf  WHERE id  = `+ id , function (err, result) {
    if (err) throw err ; 
    connection.end();
-   console.log(id);
-   return res.status(201).send(result);
+    res.status(201).send(result);
 }); 
 });
 });

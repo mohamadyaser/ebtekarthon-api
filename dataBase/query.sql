@@ -76,7 +76,7 @@ DELETE FROM `ebtekarthon`.`event_inf` WHERE `event_id`='1';
 ----   >>> get 
 SELECT * FROM `ebtekarthon`.`social_media`;
 ----   >>> post 
-INSERT INTO `ebtekarthon`.`social_media` (`wsite`, `ebt_id`) VALUES ('www.com', '1');
+INSERT INTO `ebtekarthon`.`social_media` (`wsite`, `ebt_id` , `img`) VALUES ('www.com', '1' ,'ee');
 ----  >>>> delete 
 DELETE FROM `ebtekarthon`.`social_media` WHERE `id`='1';
 

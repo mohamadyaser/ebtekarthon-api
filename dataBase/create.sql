@@ -104,3 +104,4 @@ CREATE TABLE venue (
 ALTER TABLE speaker_inf add img varchar(255);
 
 ALTER TABLE jurie_inf add img varchar(255);
+ALTER TABLE social_media ADD img varchar(255);
