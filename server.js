@@ -11,7 +11,7 @@ const
     partners = require('./api/partners'),
     cors = require('cors'),
     port = 3000 ;
-
+    
 app.use(bodyParser.json());
 app.use(cors()); 
 
