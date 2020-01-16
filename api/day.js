@@ -1,8 +1,11 @@
 const express = require('express');
 day = express.Router(),
-	routeBase = '/day', {createDatabaseConnection,DB_NAME} = require('../dataBase/config.js');
+	routeBase = '/day', {
+		createDatabaseConnection,
+		DB_NAME
+	} = require('../dataBase/config.js');
 
-                                                             // >>>>  POST <<<< //
+// >>>>  POST <<<< //
 day.post(routeBase, (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "*");
@@ -12,7 +15,7 @@ day.post(routeBase, (req, res) => {
 			console.log(error);
 			return;
 		}
-		qu = `INSERT INTO ${DB_NAME}.'day_inf' (day_date, ebt_inf) VALUES ( '`+req.body.day_date +"','" + req.body.ebt_id + " ');"
+		qu = `INSERT INTO ${DB_NAME}.'day_inf' (day_date, ebt_inf) VALUES ( '` + req.body.day_date + "','" + req.body.ebt_id + " ');"
 		connection.query(qu, function (err, result) {
 			let data = {
 				day_date: req.body.day_date,
@@ -27,7 +30,7 @@ day.post(routeBase, (req, res) => {
 	});
 })
 
-                                                              // >>>> DELETE <<<< //
+// >>>> DELETE <<<< //
 day.delete(routeBase + '/:id', (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "*");
@@ -35,7 +38,8 @@ day.delete(routeBase + '/:id', (req, res) => {
 	createDatabaseConnection((error, connection) => {
 		if (error) {
 			req.status(500);
-			return;}
+			return;
+		}
 		connection.query(`DELETE FROM ${DB_NAME}.day_inf WHERE id='` + req.params.id + "';", function (err, result) {
 			if (!err)
 				res.send('Deleted..');
@@ -48,18 +52,34 @@ day.delete(routeBase + '/:id', (req, res) => {
 	});
 });
 
-                                                              // >>>> GET <<<< //
+// >>>> GET <<<< //
 day.get(routeBase, (req, res) => {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "*");
 	createDatabaseConnection((error, connection) => {
 		if (error) {
 			console.log(error);
 			return;}
-		connection.query(`select * from event_inf join day_inf on event_id`, function (err, result) {
+		connection.query(`select * from day_inf join event_inf on event_inf.day_id = day_inf.id `, function (err, result) {
+			const response = {};
+			result.forEach(row => {
+				const event = {
+					id: row.event_id,
+					title: row.title,
+					time: row.time
+				};
+				
+				if (!response[row.id]) {
+					response[row.id] = {
+						id: row.id,
+						date: row.day_date,
+						events: [event]
+					}
+				} else {
+					response[row.id].events.push(event);
+				}
+			});
+			
 			connection.end();
-			console.log(result);
-			res.send(result);
+			res.send(Object.values(response));
 		});
 	});
 });
