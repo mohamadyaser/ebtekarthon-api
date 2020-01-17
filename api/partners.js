@@ -17,6 +17,7 @@ createDatabaseConnection((error, connection) => {
 
        connection.query(`SELECT * FROM ${DB_NAME}.partner_inf `, function (err, result) {
         if (err) throw err ; 
+        console.log(result);
           res.send(result);
  }); 
 });

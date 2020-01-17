@@ -23,6 +23,8 @@ UPDATE `ebtekarthon`.`ebtekarthon_event` SET `headerlogo`='headerlogo', `homeimg
 ---------- >>> get 
 SELECT * FROM `ebtekarthon`.`jurie_inf` ;
 --------- >>> post 
+INSERT INTO `ebtekarthon`.`jurie_inf` (`name`, `position`, `email`, `bio`, `img`) VALUES ('dsgs', 'dsgd', 'sgsd', 'dfh', 'dh');
+
 INSERT INTO `ebtekarthon`.`jurie_inf` (`name`, `position`, `email`, `bio`) VALUES ('eman', 'jordan', 'ww.com', 'dd.pgj');
 ------- >>>  delete 
 DELETE FROM `ebtekarthon`.`jurie_inf` WHERE `id`='1';
@@ -96,6 +98,7 @@ INSERT INTO `ebtekarthon`.`contact_event`(`contact_id` , `ebt_id`)  VALUES (`1`,
 INSERT INTO `ebtekarthon`.`jurie_event` (`jurie_id`,`ebt_id`)  VALUES (`1`,`1`); 
 INSERT INTO `ebtekarthon`.`partner_event`(`partner_id` , `ebt_id` ) VALUES (`1`,`1`);
 INSERT INTO `ebtekarthon`.`speaker_event`(`speaker_id` , `ebt_id` )VALUES (`1`,`1`);
+
 
 --------
 

@@ -105,3 +105,4 @@ ALTER TABLE speaker_inf add img varchar(255);
 
 ALTER TABLE jurie_inf add img varchar(255);
 ALTER TABLE social_media ADD img varchar(255);
+ALTER TABLE `ebtekarthon`.`contact_inf` CHANGE COLUMN `mobile` `mobile` VARCHAR(255) NULL DEFAULT NULL ;
