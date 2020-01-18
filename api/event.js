@@ -7,7 +7,6 @@ event = express.Router(),
 event.post(routeBase, (req, res) => {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "*");
-	console.log(req.body);
 	
 	
 	createDatabaseConnection((error, connection) => {
@@ -15,10 +14,11 @@ event.post(routeBase, (req, res) => {
 			console.log(error);
 			return;
 		}
-		let qu=`INSERT INTO ${DB_NAME}.event_inf (title, time, day_id) VALUES ( '` + req.body.time +"','" +req.body.title + "','" + req.body.day_id + " ');"
+		 qu=`INSERT INTO ${DB_NAME}.event_inf (hour, title, day_id) VALUES ( '` + req.body.hour +"','" +req.body.title + "','" + req.body.day_id + " ');"
 		connection.query(qu, function (err, result) {
+			if(err) throw err;
 			let data = {
-				time: result.time,
+				hour: result.hour,
 				title: result.title,
 				day_id: result.day_id
 			};

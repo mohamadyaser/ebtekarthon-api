@@ -6,8 +6,7 @@ function createDatabaseConnection(callback) {
     const connection = mySql.createConnection({
         host: 'localhost',
         user: 'root',
-     // password : "adminuser"
-     password :"root" , 
+      password : "adminuser",
        database: DB_NAME
     });
     // connect

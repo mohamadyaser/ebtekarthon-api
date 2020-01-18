@@ -1,9 +1,2 @@
-
-  cd C:\Users\eman ahmad\Desktop\ebtekarthon-api
-  yarn init 
-  yarn add express --save 
-  yarn add nodemon --save -dev 
-  yarn add mysql --save 
-  yarn add body-parser --save 
-  yarn add cors --save 
-  npx nodemon server 
+you have to change time table in sql from int to varchar(), cause <12:00> <<:>>
+can not pass.

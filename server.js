@@ -2,10 +2,10 @@ const
     express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
-    //day = require('./api/day'),
+    day = require('./api/day'),
     contact =require('./api/contact'),    
     speaker = require('./api/speaker'),
-   // event = require('./api/event'),
+    event = require('./api/event'),
     socialMedia = require('./api/socialMedia'),
     juries = require('./api/juries'),
     partners = require('./api/partners'),
@@ -15,8 +15,8 @@ const
 app.use(bodyParser.json());
 app.use(cors()); 
 
-//app.use(day);
-//app.use(event);
+app.use(day);
+app.use(event);
 app.use(contact);
 app.use(speaker);
 app.use(socialMedia);
