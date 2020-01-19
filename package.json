@@ -1,7 +1,7 @@
 {
   "name": "ebtekarthon-api",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "12.0.0",
+  "main": "server.js",
   "repository": "https://github.com/mohamadyaser/ebtekarthon-api",
   "license": "MIT",
   "dependencies": {
@@ -12,5 +12,5 @@
     "nodemon": "^2.0.2",
     "npx": "^10.2.1"
   },
-  "author": "eman.el.zetawy <eman.el.zetawy12@gmail.com>"
+  "author": "(hamzaOly <holimat6@gmail.com>)"
 }

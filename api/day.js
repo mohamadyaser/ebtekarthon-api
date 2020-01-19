@@ -7,7 +7,6 @@ day = express.Router(),
 
 // >>>>  POST <<<< //
 day.post(routeBase, (req, res) => {
-
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "*");
 	createDatabaseConnection((error, connection) => {
@@ -17,7 +16,6 @@ day.post(routeBase, (req, res) => {
 		}
 
 		s = `INSERT INTO ${DB_NAME}.day_inf (day_date, ebt_id) VALUES ( '` + req.body.day_date + "' ,'" + req.body.ebt_id + "');" 
-
 		connection.query(s, function (err, result) {
 			if (err) throw err;
 			let n = {
@@ -33,45 +31,20 @@ day.post(routeBase, (req, res) => {
 });
 
 
-//
-//day.post(routeBase, (req, res) => {
-//	res.header("Access-Control-Allow-Origin", "*");
-//	res.header("Access-Control-Allow-Headers", "*");
-//	console.log(req.body);
-//	createDatabaseConnection((error, connection) => {
-//		if (error) {
-//			console.log(error);
-//			return;
-//		}
-//			let id = req.body.id;
-//		var qu = `INSERT INTO ${DB_NAME}.day_inf (day_date, ebt_inf) VALUES ( '` + req.body.day_date +  "' ,'" +req.body.ebt_id + "');"
-//		connection.query(qu, function (err, result) {
-//			let data = {
-//				id: result.insertId.id,
-//			
-//			};
-//
-//			console.log(data);
-//			connection.end();
-//			res.send(data);
-//		});
-//	});
-//})
-
 // >>>> DELETE <<<< //
-day.delete(routeBase + '/:id', (req, res) => {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "*");
-	let id = req.body.id;
+day.delete(routeBase , (req, res) => {
 	createDatabaseConnection((error, connection) => {
 		if (error) {
-			req.status(500);
+			req.status(404);
 			return;
 		}
-		connection.query(`DELETE FROM ${DB_NAME}.day_inf WHERE id='` + req.params.id + "';", function (err, result) {
-			if (!err)
-				res.send('Deleted..');
-			else
+		const id = req.body.id;
+		const sql = `DELETE FROM ${DB_NAME}.day_inf WHERE id=${id}`;
+		connection.query(sql , function (err, result) {
+		if(err) {
+			res.status(500).send({error:`something failed`})
+		}
+			res.json({status: `success`})
 			connection.end();
 			res.send(result);
 		});
@@ -93,7 +66,7 @@ day.get(routeBase, (req, res) => {
 				const event = {
 					id: row.event_id,
 					title: row.title,
-					time: row.time
+					hour: row.hour
 				};
 
 				if (!response[row.id]) {

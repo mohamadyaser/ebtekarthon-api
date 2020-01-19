@@ -27,24 +27,21 @@ event.post(routeBase, (req, res) => {
 		});
 	});
 })
-
-
-event.delete(routeBase + '/:id', (req, res) => {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "*");
-	let id = req.body.id;
+event.delete(routeBase , (req, res) => {
 	createDatabaseConnection((error, connection) => {
 		if (error) {
-			req.status(500);
-			return;}
-		connection.query(`DELETE FROM ${DB_NAME}.event_inf WHERE event_id='` + req.params.id + "';", function (err, result) {
-			if (!err)
-				res.send('Deleted..');
-			else
-				console.log(err)
+			req.status(404);
+			return;
+		}
+		const id = req.body.id;
+		const sql =  `DELETE FROM ${DB_NAME}.event_inf WHERE event_id=${id}`;
+		connection.query(sql , function (err, result) {
+		if(err) {
+			res.status(500).send({error:`something failed`})
+		}
+			res.json({status: `success`})
 			connection.end();
-			console.log(id);
-			res.status(201).send(result);
+			res.send(result);
 		});
 	});
 });

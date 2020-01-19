@@ -10,11 +10,10 @@ const
     juries = require('./api/juries'),
     partners = require('./api/partners'),
     cors = require('cors'),
-    port = 3000 ;
+    port = 3000;
     
 app.use(bodyParser.json());
 app.use(cors()); 
-
 app.use(day);
 app.use(event);
 app.use(contact);
