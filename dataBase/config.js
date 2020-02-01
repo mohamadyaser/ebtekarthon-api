@@ -6,10 +6,9 @@ function createDatabaseConnection(callback) {
     const connection = mySql.createConnection({
         host: 'localhost',
         user: 'root',
-      password : "adminuser",
-       database: DB_NAME
+        password: '1234',
+        database: DB_NAME
     });
-    // connect
     connection.connect((err) => {
         if (callback) {
             callback(err, connection);
@@ -21,3 +20,4 @@ module.exports = {
     createDatabaseConnection,
     DB_NAME
 };
+

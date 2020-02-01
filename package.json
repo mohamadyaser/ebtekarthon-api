@@ -1,16 +1,16 @@
 {
   "name": "ebtekarthon-api",
-  "version": "12.0.0",
-  "main": "server.js",
-  "repository": "https://github.com/mohamadyaser/ebtekarthon-api",
+  "version": "1.0.0",
+  "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mysql": "^2.17.1",
-    "nodemon": "^2.0.2",
-    "npx": "^10.2.1"
-  },
-  "author": "(hamzaOly <holimat6@gmail.com>)"
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "node-mandrill": "^1.0.1",
+    "nodemon": "^2.0.2"
+  }
 }
