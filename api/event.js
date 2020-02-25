@@ -15,7 +15,7 @@ event.post(routeBase, (req, res) => {
 			return;
 		}
 	
-	let  qu=`INSERT INTO ${DB_NAME}.event_inf (time, title, day_id) VALUES ('`+req.body.time+`','`+req.body.title +`','`+ req.body.day_id +`');`
+	let  qu=`INSERT INTO ${DB_NAME}.event_inf (time, title, day_id) VALUES ('${req.body.time} ','${req.body.title}' ,'${req.body.day_id}');`
 	connection.query(qu, function (err, result) {
 		if(err) throw err;
 		let data = {

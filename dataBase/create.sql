@@ -32,7 +32,7 @@ CREATE TABLE event_inf(
 CREATE TABLE speaker_inf (
     id int NOT NULL AUTO_INCREMENT,
     name varchar(255),
-    position varchar(255),
+    position TEXT ,
     email varchar(255),
     bio text,
     img varchar(255),
@@ -107,3 +107,5 @@ CREATE TABLE user (
 
 
 INSERT INTO `ebtekarthon`.`ebtekarthon_event` (`headerlogo`, `homeimg`, `hometitle`, `homelocation`, `homedate`, `aboutdescr`, `aboutvidoe`, `location`, `numphone`, `email`) VALUES (' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ');
+-- ALTER TABLE `ebtekarthon`.`speaker_inf` 
+-- CHANGE COLUMN `position` `position` TEXT NULL DEFAULT NULL ;
